@@ -10,7 +10,7 @@ export const ThemeProvider = ({
 }: {
   children: ReactNode
 }) => {
-  const [theme, setTheme] = useState<Theme>('light')
+  const [theme, setTheme] = useState<Theme>('dark')
 
   useEffect(() => {
     document.documentElement.classList.remove('light', 'dark')
