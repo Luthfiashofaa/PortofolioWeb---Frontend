@@ -22,6 +22,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import Portofolio from "../../assets/portofolio_web.svg";
 
 const LandingPage = () => {
   const { theme } = useTheme();
@@ -511,7 +512,10 @@ const LandingPage = () => {
               image={thumbnail}
               link="https://drive.google.com/file/d/1I9IzDT5ZVK8mun5TV47CN1U5MZZHNCUx/view?usp=drive_link"
             />
-            <Projects1 />
+            <Projects1
+              image={Portofolio}
+              link="https://codebyfia.vercel.app/"
+            />
             <div className="hidden sm:block">
               <Projects1 />
             </div>
