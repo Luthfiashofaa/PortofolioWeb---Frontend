@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FDC435;
+  --color-secondary: #A78BFA;
+  --color-dark: #191D23;
+  --color-light: #F9FAFB;
+  --color-background: #F9FAFF;
+
+  --animate-spin-slow: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+body {
+  @apply dark:bg-dark dark:text-amber-50;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+@keyframes locationMove {
+  /* Titik 1 */
+  0%,
+  15% {
+    top: 7%;
+  }
+
+  /* Bergerak ke Titik 2 */
+  25% {
+    top: 32%;
+  }
+
+  /* Titik 2 */
+  35%,
+  45% {
+    top: 32%;
+  }
+
+  /* Bergerak ke Titik 3 */
+  55% {
+    top: 56%;
+  }
+
+  /* Titik 3 */
+  60%,
+  70% {
+    top: 56%;
+  }
+
+  /* Bergerak ke Titik 4 */
+  80% {
+    top: 81%;
+  }
+
+  /* Titik 4 */
+  85%,
+  95% {
+    top: 81%;
+  }
+
+  /* Kembali ke awal */
+  100% {
+    top: 5%;
+  }
+}
+
+.animate-location {
+  animation: locationMove 6s ease-in-out infinite;
+}
+
