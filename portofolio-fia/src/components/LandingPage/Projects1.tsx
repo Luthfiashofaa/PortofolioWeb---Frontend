@@ -11,7 +11,7 @@ const Projects1 = ({ image, link }: Projects1Props) => {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative flex h-40 w-72 overflow-hidden rounded-2xl ${
+      className={`group relative flex md:h-40 md:w-72 h-28 overflow-hidden rounded-2xl ${
         !link ? 'cursor-default' : 'cursor-pointer'
       }`}
     >

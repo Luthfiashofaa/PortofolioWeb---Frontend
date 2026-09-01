@@ -11,9 +11,13 @@ const Projects2 = ({ image, link }: Projects2Props) => {
       href={link}
       target={link ? '_blank' : undefined}
       rel={link ? 'noopener noreferrer' : undefined}
-      className={`group relative flex h-40 w-1/2 overflow-hidden rounded-2xl ${
-        link ? 'cursor-pointer' : 'cursor-default'
-      }`}
+      className={`
+        group relative flex
+        h-28 w-full flex-1
+        overflow-hidden rounded-2xl
+        md:h-40
+        ${link ? 'cursor-pointer' : 'cursor-default'}
+      `}
       onClick={(e) => {
         if (!link) e.preventDefault()
       }}
@@ -24,7 +28,6 @@ const Projects2 = ({ image, link }: Projects2Props) => {
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
 
-      {/* Hover Overlay */}
       {link && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <div className="translate-y-4 text-center opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
