@@ -22,7 +22,58 @@ body {
 @custom-variant dark (&:where(.dark, .dark *));
 
 
-@keyframes locationMove {
+/* ================= MOBILE ================= */
+
+@keyframes locationMoveMobile {
+  /* Titik 1 */
+  0%,
+  15% {
+    top: 2%;
+  }
+
+  /* Bergerak ke Titik 2 */
+  25% {
+    top: 27%;
+  }
+
+  /* Titik 2 */
+  35%,
+  45% {
+    top: 27%;
+  }
+
+  /* Bergerak ke Titik 3 */
+  55% {
+    top: 57%;
+  }
+
+  /* Titik 3 */
+  60%,
+  70% {
+    top: 57%;
+  }
+
+  /* Bergerak ke Titik 4 */
+  80% {
+    top: 80%;
+  }
+
+  /* Titik 4 */
+  85%,
+  95% {
+    top: 80%;
+  }
+
+  /* Kembali ke awal */
+  100% {
+    top: 2%;
+  }
+}
+
+
+/* ================= DESKTOP ================= */
+
+@keyframes locationMoveDesktop {
   /* Titik 1 */
   0%,
   15% {
@@ -64,11 +115,17 @@ body {
 
   /* Kembali ke awal */
   100% {
-    top: 5%;
+    top: 7%;
   }
 }
 
 .animate-location {
-  animation: locationMove 6s ease-in-out infinite;
+  animation: locationMoveMobile 8s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .animate-location {
+    animation: locationMoveDesktop 8s ease-in-out infinite;
+  }
 }
 

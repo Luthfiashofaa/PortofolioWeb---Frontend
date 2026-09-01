@@ -1,10 +1,9 @@
 import { useState } from "react";
 import logo from "../assets/logo.svg";
 import logo_dark from "../assets/logo_dark.svg";
-import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeIcon from '@mui/icons-material/DarkMode'
-import { useTheme } from './../context/theme/useTheme'
-
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { useTheme } from "./../context/theme/useTheme";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -17,16 +16,20 @@ const navLinks = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme()
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50">
-      <div className="bg-[#1E1F1F] dark:bg-primary shadow-lg mx-48 mt-5 rounded-xl px-6 h-12 flex items-center justify-between">
+      <div className="bg-[#1E1F1F] dark:bg-primary shadow-lg md:mx-48 md:mt-5 md:rounded-xl sm:px-6 px-4 md:h-12 sm:h-16 h-12 flex items-center justify-between">
         {/* Logo */}
-        {theme === 'light' ? (
-            <img src={logo} alt="logo" className="h-24 mt-2" />
-          ) : (
-            <img src={logo_dark} alt="logo" className="h-24 mt-2" />
+        {theme === "light" ? (
+          <img src={logo} alt="logo" className="md:h-24 mt-2 sm:h-28 h-20 " />
+        ) : (
+          <img
+            src={logo_dark}
+            alt="logo"
+            className="md:h-24 mt-2 sm:h-28 h-20"
+          />
         )}
 
         {/* Desktop Links */}
@@ -49,11 +52,8 @@ const Navbar = () => {
               Get in Touch
             </a>
           </li>
-          <button
-            onClick={toggleTheme}
-            className="cursor-pointer"
-          >
-            {theme === 'light' ? (
+          <button onClick={toggleTheme} className="cursor-pointer">
+            {theme === "light" ? (
               <DarkModeIcon className="text-gray-300 text-sm hover:text-primary transition-colors duration-200 cursor-pointer" />
             ) : (
               <LightModeIcon className="text-black text-sm hover:text-gray-300 transition-colors duration-200 cursor-pointer" />
@@ -68,7 +68,7 @@ const Navbar = () => {
           aria-label="Toggle menu"
         >
           <svg
-            className="w-5 h-5"
+            className="w-6 h-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -93,12 +93,28 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="absolute top-20 left-1/2 -translate-x-1/2 w-11/12 bg-[#1E1F1F] rounded-xl shadow-lg px-6 py-4 flex flex-col gap-3 md:hidden z-50">
+          <div
+            className={`
+            absolute top-11 left-0 z-40 w-full
+            flex flex-col gap-4
+            bg-[#1E1F1F] px-6 py-5
+            shadow-lg dark:bg-primary
+            md:hidden
+
+            transition-all duration-500 ease-in-out
+
+            ${
+              menuOpen
+                ? "translate-y-0 opacity-100"
+                : "-translate-y-10 opacity-0 pointer-events-none"
+            }
+          `}
+          >
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-gray-300 text-sm hover:text-primary transition-colors duration-200"
+                className="text-gray-300 dark:text-black text-sm hover:text-primary transition-colors duration-200"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -106,11 +122,18 @@ const Navbar = () => {
             ))}
             <a
               href="#contact"
-              className="bg-primary text-black text-sm font-semibold px-4 py-1.5 rounded-lg hover:opacity-90 transition-opacity duration-200 text-center"
+              className="bg-primary dark:bg-black text-black dark:text-white text-sm font-semibold px-4 py-1.5 rounded-lg hover:opacity-90 transition-opacity duration-200 text-center"
               onClick={() => setMenuOpen(false)}
             >
               Get in Touch
             </a>
+            <button onClick={toggleTheme} className="cursor-pointer">
+              {theme === "light" ? (
+                <DarkModeIcon className="text-gray-300 text-sm transition-colors duration-200 cursor-pointer" />
+              ) : (
+                <LightModeIcon className="text-black text-sm transition-colors duration-200 cursor-pointer" />
+              )}
+            </button>
           </div>
         )}
       </div>
